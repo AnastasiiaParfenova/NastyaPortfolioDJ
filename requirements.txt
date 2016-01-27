@@ -1,3 +1,4 @@
+dj-database-url==0.3.0
 Django==1.9.1
 django-hitcount==1.2.1
 django-registration-redux==1.3

@@ -1,0 +1,1 @@
+web: gunicorn NastyaPortfolioDJ.wsgi --log-file -
