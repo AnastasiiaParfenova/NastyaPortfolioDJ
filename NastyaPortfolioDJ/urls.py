@@ -19,6 +19,7 @@ from . import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', include('portfolio.urls')),
     url(r'^portfolio/', include('portfolio.urls')),
     url(r'^gallery/', include('gallery.urls')),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),

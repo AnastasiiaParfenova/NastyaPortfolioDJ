@@ -1,3 +1,4 @@
+boto==2.39.0
 dj-database-url==0.3.0
 Django==1.9.1
 django-hitcount==1.2.1
