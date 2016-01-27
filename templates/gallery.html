@@ -1,0 +1,86 @@
+{% extends 'layout.html' %}
+
+{% load staticfiles %}
+
+
+{% block head_include_block %}
+    <link rel="stylesheet" href="{% static 'gallery/css/gallery.css' %}">
+    <link rel="stylesheet" href="{% static 'gallery/css/custom.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.css">
+    <script src="{% static 'gallery/js/gallery.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.js"></script>
+    <script src="{% static 'hitcount/jquery.postcsrf.js' %}"></script>
+{% endblock %}
+
+{% block body_block %}
+    <header>
+        <div class="ui attached stackable menu">
+            <div class="ui container">
+                <a data-scroll href="/portfolio" class="item">Главная</a>
+                <a data-scroll href="/portfolio/#me" class="item">Обо мне</a>
+                <a data-scroll href="/portfolio/#interesting" class="item">Интересное</a>
+                <a data-scroll href="/portfolio/#contacts" class="item">Контакты</a>
+                <div class="right menu">
+                    {% if user.is_authenticated %}
+                        <a class="item">Вы вошли как "{{ user }}"</a>
+                        <a href="/accounts/logout?next=/gallery" class="item">Выйти</a>
+                    {% else %}
+                        <a href="/accounts/login" class="item">Войти</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+    <main id="main">
+        <div class="ui stackable three column centered grid" id="fav-img-div">
+            <div class="column">
+                <div class="ui rised segment">
+                    <h3 class="ui block header">
+                        Любимая фотография
+                    </h3>
+                    <img class="ui fluid image" alt="pic" id="fav-img" src="">
+                    <button class="fluid negative ui button" onclick="unsetFavImage()">Разонравилась</button>
+                </div>
+            </div>
+        </div>
+        <div class="ui four column doubling stackable grid container">
+            {% if pictures %}
+                {% for picture in pictures %}
+                    <div class="column">
+                        <a href="#{{ picture.pic_id }}">
+                            <img class="ui image bordered" src="{{ picture.preview_pic.url }}" alt="photo">
+                        </a>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <div class="ui long modal" id="modal">
+            <div class="header"></div>
+            <div class="content">
+                <img alt="bigpic" src="{% static 'gallery/images/placeholder.gif' %}" class="ui image" id="bigpic">
+                <div class="ui yellow message" onclick="setFavImageHandler()" style="cursor: pointer;">Хочу видеть
+                    эту фотку чаще
+                </div>
+                <div class="content" id="modal-content"></div>
+            </div>
+        </div>
+
+        <div class="blanket" id="blanket" onclick="exitModuleScreen()"></div>
+        <div class="info" id="info">
+            <p>
+                Справка:
+            </p>
+            <ul>
+                <li>Для вызова справки нажмите F1</li>
+                <li>Для просмотра фото нажмите на него</li>
+                <li>Для возврата ко всем фотографиям нажмите esc или щелкните по фону</li>
+            </ul>
+        </div>
+    </main>
+    <script>
+        domReady();
+        {#        $('.ui.modal').modal('show');#}
+    </script>
+{% endblock %}

@@ -1,0 +1,73 @@
+{% extends 'registration/base.html' %}
+{% block title %}Вход{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+    .ui.form .error.message {
+        display: inline-block;
+    }
+  </style>
+{% endblock %}
+
+{% block body_block %}
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h2 class="ui teal image header">
+                <div class="content">
+                    Войдите в свой аккаунт
+                </div>
+            </h2>
+            {% if form.non_field_errors %}
+                <div class="ui error message">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            <form action="" method="post" class="ui large form">
+                {% csrf_token %}
+                <div class="ui segment">
+                    {% if form.username.errors %}
+                        <div class="ui error message">
+                            {{ form.username.errors }}
+                        </div>
+                    {% endif %}
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="user icon"></i>
+{#                            <input type="text" name="email" placeholder="Логин">#}
+                            {{ form.username }}
+                        </div>
+                    </div>
+                    {% if form.password.errors %}
+                        <div class="ui error message">
+                            {{ form.password.errors }}
+                        </div>
+                    {% endif %}
+                    <div class="field">
+                        <div class="ui left icon input">
+                            <i class="lock icon"></i>
+{#                            <input type="password" name="password" placeholder="Пароль">#}
+                            {{ form.password }}
+                        </div>
+                    </div>
+                    <input type="submit" class="ui fluid large teal submit button" value="Войти">
+                </div>
+            </form>
+
+            <div class="ui message">
+                <a href="/accounts/register">Зарегистрироваться</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

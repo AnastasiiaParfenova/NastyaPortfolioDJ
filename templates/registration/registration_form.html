@@ -1,0 +1,58 @@
+{% extends 'registration/base.html' %}
+{% block title %}Вход{% endblock %}
+
+{% block styles %}
+    <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+    .ui.form .error.message {
+        display: inline-block;
+    }
+  </style>
+{% endblock %}
+
+{% block body_block %}
+    <div class="ui middle aligned center aligned grid">
+        <div class="column">
+            <h2 class="ui teal image header">
+                <div class="content">
+                    Зарегистрируйтесь
+                </div>
+            </h2>
+            {% if form.non_field_errors %}
+                <div class="ui error message">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            <form action="" method="post" class="ui large form">
+                {% csrf_token %}
+                <div class="ui segment">
+                    {% for field in form %}
+                        {% if field.errors %}
+                            <div class="ui error message">
+                                {{ field.errors }}
+                            </div>
+                        {% endif %}
+                        <div class="field">
+                            {{ field.label_tag }}
+                            <div class="ui left input">
+                                {{ field }}
+                            </div>
+                        </div>
+                    {% endfor %}
+                    <input type="submit" class="ui fluid large teal submit button" value="Зарегистрироваться">
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

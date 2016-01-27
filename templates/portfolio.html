@@ -1,0 +1,125 @@
+{% extends 'layout.html' %}
+{% load staticfiles %}
+
+{% block title %}Анастасия Парфенова{% endblock %}
+
+{% block head_include_block %}
+    <link rel="stylesheet" href="{% static 'portfolio/css/skeleton.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/normalize.css' %}">
+    <link rel="stylesheet" href="{% static 'portfolio/css/custom.css' %}">
+{% endblock %}
+
+{% block body_block %}
+    <header>
+    <ul>
+        <li><span><a data-scroll href="#me" class="pure-menu-link">Обо мне</a></span></li>
+        <li><span><a data-scroll href="/gallery" class="pure-menu-link">Галерея</a></span></li>
+        <li><span><a data-scroll href="#interesting" class="pure-menu-link">Интересное</a></span></li>
+        <li><span><a data-scroll href="#contacts" class="pure-menu-link">Контакты</a></span></li>
+    </ul>
+</header>
+<div class="bigpic-container">
+    <div class="bigpic-wrapper">
+        <div class="container">
+            <div class="row">
+                <div class="six columns">
+                    <h1 class="bigpic-head">Привет, меня зовут Настя</h1>
+                    <p class="bigpic-subhead">Добро пожаловать на мой сайт</p>
+                </div>
+                <div class="six columns"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="content-wrapper">
+
+    <div class="section values" id="me">
+        <div class="container">
+            <div class="row">
+                <div class="one-third column value">
+                    <img class="u-full-width" src="{% static 'portfolio/images/I.JPG' %}" alt="Me">
+                </div>
+                <div class="two-thirds column value">
+
+                    <h5 class="value-multiplier">Обо мне</h5>
+
+                    <p class="value-description">Я студентка третьего курса <a href="http://imkn.urfu.ru">Мат-Меха</a>
+                        <a href="http://imkn.urfu.ru">УрФУ</a>, моя специальность - компьютерные науки.
+                        В 2013 году окончила физ-мат класс <a href="http://lyceum.urfu.ru"> СУНЦ УрФУ</a>.
+                        Сейчас мне 20 лет, живу в городе Екатеринбурге.
+                                            </p>
+                    <p class="value-description">
+                        Я очень люблю танцевать, занимаюсь танцами с 5 лет, а также неплохо рисую :)
+                        Более подробно о моих увлечениях и о моей жизни читайте в разделе
+                        <a data-scroll href="#interesting" class="pure-menu-link">интересное</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section categories" id="gallery">
+        <div class="container">
+            <h3 class="section-heading">Галерея</h3>
+            <div class="row">
+                <div class="one-third column category">
+                    <a href="/gallery">
+                    <img class="u-max-full-width" src="{% static 'portfolio/images/foto1.JPG' %}" alt="Foto1">
+                    </a>
+                </div>
+                <div class="one-third column category">
+                    <a href="/gallery">
+                    <img class="u-max-full-width" src="{% static 'portfolio/images/foto2.JPG' %}" alt="Foto2">
+                    </a>
+                </div>
+                <div class="one-third column category">
+                    <a href="/gallery">
+                    <img class="u-max-full-width" src="{% static 'portfolio/images/foto3.JPG' %}" alt="Foto3">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section values" id="interesting">
+        <div class="container">
+            <h5 class="value-multiplier">Интересное</h5>
+            <div class="row">
+                <div class="two-thirds column value">
+                    <h5 class="value-heading">О пандах</h5>
+                    <p class="value-description">Я очень люблю животных, всех без исключения, но одно из моих самых любимых животных - это большая панда.
+                    Я, к сожалению, не видела панд в живую, но часто наблюдаю за ними с помощью веб камер в зоопарках.
+                    В августе этого года в зоопарке Вашингтона родился детеныш панды, его назвали Бэй-Бэй, что в переводе на русский означает сокровище.
+                    Нажмите на фото Бэй-Бэй и посмотрите на малыша и его маму-панду Мэй-Сян :)
+                    </p>
+                 </div>
+                <div class="one-third column value">
+                    <a href="http://nationalzoo.si.edu/animals/webcams/giant-panda.cfm">
+                        <img class="u-full-width" src="{% static 'portfolio/images/beibei.png' %}" alt="Panda">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section categories" id="contacts">
+        <div class="container">
+            <h3 class="section-heading">Связаться со мной</h3>
+            <div class="row">
+                <div class="six columns category">
+                    <a href="https://vk.com/id13713313"><img src="{% static 'portfolio/images/vk.png' %}" alt="VK"></a>
+                </div>
+                <div class="six columns category">
+                    <a href="mailto:aap1612@ya.ru"><img src="{% static 'portfolio/images/mail.png' %}" alt="mail"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section footer">
+        <div class="container">
+            <h5 class="footer-value">Анастасия Парфёнова. 2015</h5>
+        </div>
+    </div>
+</div>
+{% endblock %}

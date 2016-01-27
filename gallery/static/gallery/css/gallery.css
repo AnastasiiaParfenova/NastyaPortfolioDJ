@@ -1,0 +1,50 @@
+body
+{
+    text-align: center;
+}
+
+.category:hover > img
+{
+    opacity: 0.5;
+}
+
+.blanket
+{
+    background-color: rgba(0, 0, 0, .5);
+    font-size: 0;
+    position: fixed;
+    z-index: 9001;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.big-pic
+{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.big-pic > img
+{
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.info
+{
+    position:absolute;
+    z-index: 9002;
+    top: 0;
+    left: 0;
+    margin-left: 35%;
+    margin-top: 15%;
+    background-color: #eaeaea;
+    width: 350px;
+    height: 200px;
+    padding: 10px;
+    display: none;
+}

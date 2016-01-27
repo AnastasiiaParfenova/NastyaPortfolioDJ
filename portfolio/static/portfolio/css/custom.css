@@ -1,0 +1,235 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto&subset=latin,cyrillic);
+
+body
+{
+    font-family: 'Roboto', sans-serif;
+}
+
+header
+{
+    background: rgba(68, 74, 107, 0.35);
+    position: fixed;
+    width: 100%;
+    height: 50px;
+    top: 0;
+    z-index: 3;
+}
+
+header > ul
+{
+    display: inline-block;
+    float: left;
+    list-style: none;
+    position: relative;
+    top: 10px;
+}
+
+header > ul > li
+{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+header > ul > li > span
+{
+    padding: .5em 1em;
+    color: #191449;
+
+}
+
+header > ul > li > span > a
+{
+    color: #0d2e60;
+}
+
+.bigpic-container
+{
+    z-index: 1;
+    overflow: hidden;
+
+    background-size: cover;
+    background-attachment: fixed;
+    background-image: url(../images/f1.jpg);
+
+    /* The following styles are required for the "scroll-over" effect */
+    width: 100%;
+    height: 90%;
+    top: 0;
+    left: 0;
+    position: fixed !important;
+}
+
+.content-wrapper
+{
+    position: absolute;
+    top: 90%;
+    width: 100%;
+    min-height: 10%;
+    z-index: 2;
+    background: #fff;
+}
+
+.bigpic-wrapper
+{
+    width: 80%;
+    height: 50%;
+    margin: auto;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    text-align: center;
+}
+
+.bigpic-wrapper > .container
+{
+    position: relative;
+    top: 15vh;
+}
+
+.bigpic-head
+{
+    color: #b93b24;
+    letter-spacing: 0.05em;
+    font-weight: 700;
+    line-height: 1em;
+}
+
+.bigpic-subhead
+{
+    color: #191449;
+    letter-spacing: 0.02em;
+    opacity: 0.8;
+    font-size: 25px;
+}
+
+.section {
+    padding: 8rem 0 7rem;
+    text-align: center;
+}
+.section-heading,
+.section-description {
+    margin-bottom: 1.2rem;
+    color: #0d2e60;
+}
+
+a {
+    color: #2cdde1;
+    text-decoration: none;
+}
+a:visited {
+    color: #0d2e60;
+}
+a:hover {
+    color: #b93b24;
+}
+
+
+/* Values
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.values {
+    background: rgba(71, 80, 107, 0.49);
+    background-size: cover;
+    color: #fff;
+    padding-bottom: 5rem;
+}
+.value-multiplier {
+    margin-bottom: 3rem;
+    color: #2cdde1;
+}
+.value-heading {
+    margin-bottom: .3rem;
+}
+.value-description {
+    opacity: .8;
+    font-weight: 400;
+}
+
+.footer-value
+{
+    margin: 0 auto;
+    color: #2cdde1;
+    font-size: 15px;
+}
+
+/* Categories
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.categories {
+    background-size: cover;
+}
+.categories .section-description {
+    margin-bottom: 4rem;
+}
+
+/* Bigger than 550 */
+@media (min-width: 550px) {
+    .bigpic-head,.bigpic-subhead
+    {
+        font-size: 15px;
+
+    }
+    .section {
+        padding: 12rem 0 11rem;
+    }
+    .hero {
+        padding-bottom: 12rem;
+        text-align: left;
+        height: 165px;
+    }
+    .hero-heading {
+        font-size: 2.4rem;
+    }
+}
+
+/* Bigger than 750 */
+@media (min-width: 750px) {
+    .hero {
+        height: 190px;
+    }
+    .hero-heading {
+        font-size: 2.6rem;
+    }
+    .section {
+        padding: 14rem 0 15rem;
+    }
+    .hero {
+        padding: 16rem 0 14rem;
+    }
+    .section-description {
+        max-width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .categories {
+        padding: 15rem 0 8rem;
+    }
+}
+
+/* Bigger than 1000 */
+@media (min-width: 1000px) {
+    .bigpic-head
+    {
+        font-size: 50px;
+    }
+    .bigpic-subhead {
+        font-size: 25px;
+    }
+    .section {
+        padding: 4em;
+    }
+
+    .footer
+    {
+        background: rgba(66, 74, 99, 0.92);
+        padding: 10px;
+    }
+
+    .hero {
+        padding: 22rem 0;
+    }
+
+    .hero-heading {
+        font-size: 3.0rem;
+    }
+}

@@ -1,0 +1,21 @@
+<div class="ui modal">
+    <div class="header"></div>
+    <div class="content">
+        <img alt="bigpic" src="{{ picture.0.full_pic.url }}" class="ui image">
+        <div class="ui yellow message" onclick="setFavImageHandler()" style="cursor: pointer;">Хочу видеть котика чаще
+        </div>
+        <div class="content">
+            {% if comments %}
+                <ul>
+                    {% for comment in comments %}
+                        <li>{{ comment }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <div class="ui warning message">
+                    <a href="/login">Необходимо войти</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
