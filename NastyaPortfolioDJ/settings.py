@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'hitcount',
     'portfolio',
     'gallery',
+    'likes'
 ]
 
 MIDDLEWARE_CLASSES = [

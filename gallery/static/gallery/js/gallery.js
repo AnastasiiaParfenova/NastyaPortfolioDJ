@@ -114,8 +114,42 @@ function genFullPic(pic) {
         prevImg.src = pictures[hash - 1][1];
     }
 
-    // Добавляем комментарии
+    // Отображаем текущие лайки
     var modalContent = document.getElementById('modal-content');
+    var likes = getLikes(hash);
+    var likeDiv = drawlikes(likes['total_likes']);
+    modalContent.appendChild(likeDiv);
+
+    // Следим за нажатием на кнопку
+    document.getElementById('liked-button').addEventListener('click', function(event){
+        var new_like = JSON.stringify({
+                picId: hash
+        });
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/likes/addlike/', true);
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.setRequestHeader('X-CSRFToken', getCookie('csrftoken'));
+        xhr.send(new_like);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState != 4) return;
+            if (xhr.status != 200) {
+                console.log('Error in query', xhr.statusText);
+            } else {
+                var ans = JSON.parse(xhr.responseText);
+                console.log(ans);
+                var old = parseInt(document.getElementById('likes-count').innerHTML, 10);
+                if (ans['state'] === '+1') {
+                    old += 1;
+                } else {
+                    old -= 1;
+                }
+                document.getElementById('likes-count').innerHTML = old.toString();
+            }
+        };
+    });
+
+    // Добавляем комментарии
+    //var modalContent = document.getElementById('modal-content');
     var uiComments = document.createElement('div');
     uiComments.setAttribute('class', 'ui comments');
     var comments = getComments(hash.toString());
@@ -204,6 +238,21 @@ function getComments(hash){
     }
 }
 
+// Получаем лайки для фотографии
+function getLikes(hash){
+    var likes = null;
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', '/likes/likes/' + hash, false);
+    xhr.send();
+    if (xhr.status != 200) {
+        console.log('Error in query', xhr.statusText);
+    } else {
+        var ans = JSON.parse(xhr.responseText);
+        console.log(ans);
+        return ans;
+    }
+}
+
 // Отображаем комментарий
 function drawComment(comment) {
     var commentDiv = document.createElement('div');
@@ -223,6 +272,27 @@ function drawComment(comment) {
     contentDiv.appendChild(textDiv);
 
     return commentDiv;
+}
+
+// Отображение лайков
+function drawlikes(likes_count) {
+    var buttonDiv = document.createElement('div');
+    buttonDiv.setAttribute('class', 'ui labeled button');
+    buttonDiv.setAttribute('tabindex', '0');
+    buttonDiv.setAttribute('id', 'likes-field');
+    var secondButtonDiv = document.createElement('div');
+    secondButtonDiv.setAttribute('class', 'ui button');
+    secondButtonDiv.setAttribute('id', 'liked-button');
+    secondButtonDiv.innerHTML = '<i class="heart icon"></i> Лайк';
+    var likesCountDiv = document.createElement('a');
+    likesCountDiv.setAttribute('class', 'ui basic label');
+    likesCountDiv.setAttribute('id', 'likes-count');
+    likesCountDiv.innerHTML = likes_count;
+
+    buttonDiv.appendChild(secondButtonDiv);
+    buttonDiv.appendChild(likesCountDiv);
+
+    return buttonDiv;
 }
 
 function drawReplyForm() {

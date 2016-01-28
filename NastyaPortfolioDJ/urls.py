@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^$', include('portfolio.urls')),
     url(r'^portfolio/', include('portfolio.urls')),
     url(r'^gallery/', include('gallery.urls')),
+    url(r'^likes/', include('likes.urls')),
     url(r'^static/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.STATIC_ROOT}),
     url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
     url(r'^accounts/', include('registration.backends.simple.urls')),
