@@ -19,7 +19,6 @@ def add_like(request):
         print(new_like)
         if request.user.is_authenticated():
             if len(Likes.objects.filter(picture__pic_id=new_like['picId'], user=request.user, liked=1)) > 0:
-                print('Уменьшаем')
                 l = Likes.objects.get(picture__pic_id=new_like['picId'], user=request.user, liked=1)
                 picture = Picture.objects.get(pic_id=new_like['picId'])
                 l.liked = 0
@@ -27,7 +26,6 @@ def add_like(request):
                 l.save()
                 return JsonResponse({'state': '-1'})
             else:
-                print('Увеличиваем')
                 if len(Likes.objects.filter(picture__pic_id=new_like['picId'], user=request.user)) > 0:
                     l = Likes.objects.get(picture__pic_id=new_like['picId'], user=request.user)
                     l.liked = 1
